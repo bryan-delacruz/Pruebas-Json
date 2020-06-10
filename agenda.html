@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda</title>
+  </head>
+  <body>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <td>Teléfono</td>
+        </tr>
+      </thead>
+      <tbody id="data"></tbody>
+    </table>
+  </body>
+  <script type="text/javascript">
+    window.onload = function () {
+      let xhr = new XMLHttpRequest();
+      xhr.open("GET", "HTTP://localhost:3000/contactos", true);
+      xhr.send();
+      xhr.onload = function () {
+        if (xhr.status == 200) {
+          console.log(xhr.status);
+          console.log(xhr.response);
+          lista=JSON.parse(xhr.response);
+          let html="";
+          for(contacto of lista){
+            console.log(contacto);
+            html+=`<tr>
+              <td>${contacto.nombre}</td>
+              <td>${contacto.telefono}</td>
+              </tr>`;
+          }
+          let cuerpo=document.getElementById("data");
+          cuerpo.innerHTML=html;
+        } else {
+          console.log("error");
+        }
+      };
+    };
+  </script>
+</html>

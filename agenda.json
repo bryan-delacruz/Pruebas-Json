@@ -1,0 +1,14 @@
+{
+	"contactos" : [
+		{
+			"id" : 1,
+			"nombre" : "Juan López",
+			"telefono" : "987654321"
+		},
+		{
+			"id" : 2,
+			"nombre" : "Karen García",
+			"telefono": "989876543"
+		}
+	]
+}
