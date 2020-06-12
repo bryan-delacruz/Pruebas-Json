@@ -1,9 +1,14 @@
 {
   "contactos": [
     {
-      "id": 1,
       "nombre": "Bryan De La Cruz",
-      "telefono": "987654321"
+      "telefono": "987654321",
+      "id": 1
+    },
+    {
+      "nombre": "Kenberly Osorio",
+      "telefono": "123456789",
+      "id": 2
     }
   ]
 }

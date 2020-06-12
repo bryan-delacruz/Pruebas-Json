@@ -6,7 +6,8 @@
     <title>Agenda</title>
   </head>
   <body>
-    <h2>Nuevo Contacto</h2>
+    <h2><span id="titulo">Nuevo</span> Contacto</h2>
+    <input type="hidden" id="cod"/>
     <input type="text" id="nom" placeholder="Nombre" /><br />
     <input type="text" id="telf" placeholder="Teléfono" /><br />
     <button onclick="nuevo()">Guardar</button>
@@ -26,13 +27,30 @@
   <script type="text/javascript">
     obj=new Agenda();
     function nuevo(){
-      cajNom=document.getElementById("nom");
-      cajTelf=document.getElementById("telf");
-      nombre=cajNom.value;
-      telefono=cajTelf.value;
-      obj.insertar(nombre,telefono);
-      cajNom.value="";
-      cajTelf.value="";
+      titulo=document.getElementById("titulo");
+      cajaId=document.getElementById("cod");
+      cajaNom=document.getElementById("nom");
+      cajaTelf=document.getElementById("telf");
+
+      id=cajaId.value;
+      nombre=cajaNom.value;
+      telefono=cajaTelf.value;
+
+      console.log("id "+id);
+      
+      if(id){
+        console.log("Editar");
+        obj.editar(id,nombre,telefono);
+      }else{
+        console.log("Insertar");
+        obj.insertar(nombre,telefono);
+      }
+      
+      
+      titulo.innerHTML="Nuevo";
+      cajaId.value="";
+      cajaNom.value="";
+      cajaTelf.value="";
     }
     function eliminar(id){
       console.log("eliminar:" + id);

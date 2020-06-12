@@ -44,10 +44,26 @@ class Agenda {
       .then((Response) => Response.json())
       .then((data) => {
         console.log(data);
+        let titulo = document.getElementById("titulo");
+        let cajaId = document.getElementById("cod");
         let cajaNom = document.getElementById("nom");
         let cajaTelf = document.getElementById("telf");
+        titulo.innerHTML = "Editar";
+        cajaId.value = data.id;
         cajaNom.value = data.nombre;
         cajaTelf.value = data.telefono;
       });
+  }
+  editar(id, nom, telf) {
+    let url_ruta = this.ruta + "/" + id;
+    let val_headers = { "Content-type": "application/json;charset=UTF-8" };
+    let data = JSON.stringify({
+      nombre: nom,
+      telefono: telf,
+    });
+    fetch(url_ruta, { method: "PUT", body: data, headers: val_headers })
+      .then((Response) => Response.json())
+      .then((datos) => console.log(datos));
+    this.listar();
   }
 }
