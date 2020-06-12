@@ -6,40 +6,46 @@
     <title>Agenda</title>
   </head>
   <body>
+    <h2>Nuevo Contacto</h2>
+    <input type="text" id="nom" placeholder="Nombre" /><br />
+    <input type="text" id="telf" placeholder="Teléfono" /><br />
+    <button onclick="nuevo()">Guardar</button>
+    <h2>Lista de Contactos</h2>
     <table border="1">
       <thead>
         <tr>
           <th>Nombre</th>
-          <td>Teléfono</td>
+          <th>Teléfono</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody id="data"></tbody>
     </table>
   </body>
+  <script type="text/javascript" src="agenda.js"></script>
   <script type="text/javascript">
-    window.onload = function () {
-      let xhr = new XMLHttpRequest();
-      xhr.open("GET", "HTTP://localhost:3000/contactos", true);
-      xhr.send();
-      xhr.onload = function () {
-        if (xhr.status == 200) {
-          console.log(xhr.status);
-          console.log(xhr.response);
-          lista=JSON.parse(xhr.response);
-          let html="";
-          for(contacto of lista){
-            console.log(contacto);
-            html+=`<tr>
-              <td>${contacto.nombre}</td>
-              <td>${contacto.telefono}</td>
-              </tr>`;
-          }
-          let cuerpo=document.getElementById("data");
-          cuerpo.innerHTML=html;
-        } else {
-          console.log("error");
-        }
-      };
-    };
+    obj=new Agenda();
+    function nuevo(){
+      cajNom=document.getElementById("nom");
+      cajTelf=document.getElementById("telf");
+      nombre=cajNom.value;
+      telefono=cajTelf.value;
+      obj.insertar(nombre,telefono);
+      cajNom.value="";
+      cajTelf.value="";
+    }
+    function eliminar(id){
+      console.log("eliminar:" + id);
+      rpta=confirm("¿Estás seguro de eliminar el contacto?");
+      if (rpta) {
+        obj.remover(id);
+      }
+    }
+    function mostrar(id){
+      obj.detalle(id);
+    }
+    window.onload=function(){
+      obj.listar();
+    }
   </script>
 </html>
