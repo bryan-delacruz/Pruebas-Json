@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrito de compras</title>
+  </head>
+  <body>
+    <h2>Producto</h2>
+    <select id="frutas">
+      <option value="0">Selecciona una fruta</option>
+    </select>
+    <input type="number" id="kg" placeholder="Kilos" />
+    <button onclick="agregar()">Añadir &#128722;</button>
+    <h2>Carrito de compras</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Acciones</th>
+          <th>Frutas</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="lista"></tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3" align="right">Total:</td>
+          <td id="total">0.00</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+  <script type="text/javascript" src="./carrito.js"></script>
+  <script type="text/javascript" src="./scripts.js"></script>
+</html>
