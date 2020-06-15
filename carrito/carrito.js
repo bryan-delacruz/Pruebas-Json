@@ -5,6 +5,7 @@ class Carrito {
     let subtotal = cant * precio;
     fruta = {
       "nombre": fruta,
+      "precio":precio,
       "cant": cant,
       "subtotal": subtotal
     };
@@ -20,6 +21,7 @@ class Carrito {
       html += `<tr>
             <td><button onclick="eliminar(${pos})">x</button></td>
             <td><button>${fruta.nombre}</button></td>
+            <td><button>${fruta.precio}</button></td>
             <td><button>${fruta.cant}</button></td>
             <td><button>${fruta.subtotal.toFixed(2)}</button></td>
             </tr>`;
